@@ -1,0 +1,32 @@
+WINDOWS QUICK START
+
+TERMINAL 1
+----------
+cd C:\path\to\hospital_readmission_stage1\backend
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+
+TERMINAL 2
+----------
+cd C:\path\to\hospital_readmission_stage1\frontend
+npm install
+npm run dev
+
+ADMIN DEMO SETUP
+----------------
+Open another PowerShell after backend is running:
+Invoke-RestMethod -Method Post http://127.0.0.1:8000/api/admin/create-demo
+
+Then login:
+username: admin
+password: Admin@123
+
+PATIENT
+-------
+Use Register on the frontend, then login.
+
+NOTE
+----
+The patient-facing prediction UI is complete, but the current full 42-feature model is intentionally not automatically used with the smaller form. A compact-feature Elastic Net model must be trained next so predictions are technically valid.
